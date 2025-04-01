@@ -2,8 +2,11 @@
   "name": "backend",
   "version": "1.0.0",
   "main": "index.js",
+  "module": "module",
   "scripts": {
-    "start": "nodemon index.js",
+    "start:prod": "env-cmd -f .env.production node index.js",
+    "start:stag":"env-cmd -f .env.staging node index.js",
+    "start:dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -13,6 +16,7 @@
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
+    "env-cmd": "^10.1.0",
     "express": "^5.1.0",
     "mongoose": "^8.13.1"
   }
