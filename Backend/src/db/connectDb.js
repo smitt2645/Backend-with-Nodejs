@@ -1,8 +1,5 @@
 import mongoose from "mongoose";
 import { database_name } from "../constant.js";
-import dotenv from 'dotenv';
-dotenv.config();  // This loads variables from the .env file into process.env
-
 
 // when you define IIFE must start with ( ; ) , if there is any code exist before IIFE define.
 
@@ -20,7 +17,7 @@ dotenv.config();  // This loads variables from the .env file into process.env
 const connectDb = async () => {
     try {
         const connectionInstance = await mongoose.connect(`${process.env.MongoDB_URI}/${database_name}`);
-        console.log(`mongoDB connected ! DB HOST:${connectionInstance}`)
+        console.log(` mongoDB connected successfully !`)
     } catch (error) {
         console.log("mongoDb_connection_error:",error)
         process.exit(1);
