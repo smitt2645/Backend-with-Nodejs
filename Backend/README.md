@@ -58,3 +58,19 @@ res.set()
 res.status()
 res.type()
 res.vary()
+
+
+<!-- // Types of Middleware:
+
+// Mongoose has 4 types of middleware: document middleware, model middleware, aggregate middleware, and query middleware.
+
+// Document middleware is supported for the following document functions. In Mongoose, a document is an instance of a Model class. In document middleware functions, this refers to the document. To access the model, use this.constructor.
+
+// validate
+// save
+// updateOne
+// deleteOne
+// init (note: init hooks are synchronous)
+// middleware will have always access og next !
+
+ -->
