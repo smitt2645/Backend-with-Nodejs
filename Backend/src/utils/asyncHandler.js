@@ -6,10 +6,10 @@
 //     req
 //       .status(error.code || 500)
 //       .json({ success: false, message: `error ${error}` });
-//   }
-// };
+    //   }
+    // };
 
-//  custom higher order function that retun a function 
+    //  custom higher order function that retun a function 
 export const asyncHandler =  (requestHandler) => {
 //    here req,res,next passed by express js it's own !
     return (req,res,next)=>{ 
