@@ -10,7 +10,7 @@
     // };
 
     //  custom higher order function that retun a function 
-export const asyncHandler =  (requestHandler) => {
+const asyncHandler =  (requestHandler) => {
 //    here req,res,next passed by express js it's own !
     return (req,res,next)=>{ 
         Promise.resolve().then(async ()=> await requestHandler(req,res,next)).catch((err)=> next(err))

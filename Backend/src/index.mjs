@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import connectDb from "./db/connectDb.js";
 import cors from "cors";
 import cookieParser from "cookie-parser";
+import { userRouter } from "./routes/user.routes.js";
 
 // Server Setup!
 const app = express();
@@ -32,6 +33,9 @@ dotenv.config({
 
 // static public folder!
 app.use(express.static("public"));
+
+// import routes!
+app.use("/api/v1/users", userRouter);
 
 // Database connection !
 const Port = process.env.PORT || 8003;
