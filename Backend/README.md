@@ -74,3 +74,44 @@ res.vary()
 // middleware will have always access og next !
 
  -->
+
+* Communication Protocaol !
+    All About HTTP: ( Hyper-Text-Transfer-Protocol )
+    
+    header : {
+        req: client,
+        res : server
+        representation : encoding ,representation (usually in mobile app)
+        payload : data
+    }
+
+    * Most Common Header : 
+        accept : applicaion/json,text/html
+        User-Agent : browser, postman ,thunder-client ,engine related info! 
+        Authorization : eg. jwt Bearer Tokens,
+        content-type : images ,pdf
+        cookies : howmuch time user will able to login,
+        cache-control : data exp time will be stored ! 3600 sec
+
+    * Cors :
+        Access-control-allow-origin
+        Access-control-allow-credentials
+        Access-control-allow-methos
+    
+    * Methods :
+        HEAD : Here just we get all about header only No body message , eg. user-agent,chache-control 
+        GET : Retrieve data from DB
+        POST: Store date in DB
+        PUT : Update data in DB : Ovverride data !
+        DELETE : remove data from DB
+        OPTIONS : what operation available ? , show me that which operations are available on end point we can get !
+        TRACE : Loopback test , debuging about proxies , need to know about timing  
+        PATCH : Ovveride Perticuler part of data !
+
+    * Stauts Code (ISRCS) : 
+        1XX : Informational
+        2XX : Success
+        3XX : Redirection
+        4XX : Client Error
+        5XX : Server Error
+        
