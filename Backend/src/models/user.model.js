@@ -34,7 +34,6 @@ const userShema = new mongoose.Schema(
     },
     coverImage: {
       type: String,
-      required: true,
     },
     refreshToken: {
       type: String,

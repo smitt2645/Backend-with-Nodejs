@@ -29,7 +29,6 @@ const registerUser = asyncHandler(async(req,res)=>{
         throw new apiError(404,"username or password or email is required! ,Please verify once that are fields contains empty string!")
     }
 
-    console.table([username,password,email])
 
     // if user already exist so send error!
     const isUserAlreadyExist = await UserModel.findOne({
@@ -41,27 +40,33 @@ const registerUser = asyncHandler(async(req,res)=>{
     }
 
     // get file from client side and upload into cloudinary !
+
     const avatarPath = req.files?.avatar[0]?.path;
-    const coverImagePath = req.files?.coverImage[0]?.path;
-    console.log("avatarPath===>>>",avatarPath)
-    console.log("coverImagePath===>>>",coverImagePath)
+    const coverImagePath = req.files && Array.isArray(req.files?.coverImage) ? req.files?.coverImage[0]?.path[0] : null;
+    
     
     if(!avatarPath){
         throw new apiError(404,"avatar is required!")
     }
     // New user creation!
-
-    const cloudinaryAvtarFilePath = await uploadOnCloudinary(avatarPath)
-    const cloudinaryCoverImageFilePath = await uploadOnCloudinary(coverImagePath)
-    console.log(cloudinaryAvtarFilePath,"cloudinaryAvtarFilePath")
-
-    const newUser = {
+    let cloudinaryAvtarFilePath;
+    let cloudinaryCoverImageFilePath;
+    
+    if(avatarPath){
+     cloudinaryAvtarFilePath = await uploadOnCloudinary(avatarPath)
+    }
+    
+    if(coverImagePath){
+     cloudinaryCoverImageFilePath = await uploadOnCloudinary(coverImagePath)
+    }
+    
+    let newUser = {
         username:username.toLowerCase(),
         password,
         fullName,
         email,
-        avatar : cloudinaryAvtarFilePath.url || "",
-        coverImage : cloudinaryCoverImageFilePath.url || "",
+        avatar : cloudinaryAvtarFilePath?.url || "",
+        coverImage : cloudinaryCoverImageFilePath?.url || "",
     }
 
     if(Object.keys(newUser).length === 0){
