@@ -7,6 +7,7 @@
     "start:prod": "env-cmd -f .env.production node ./src/index.mjs",
     "start:stag": "env-cmd -f .env.staging node ./src/indexm.js",
     "dev": "nodemon  src/index.mjs",
+    "start":"node src/index.mjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

@@ -1,8 +1,8 @@
-import mongoose, { Model, Schema } from "mongoose";
+import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
-const userShema = new Schema(
+const userShema = new mongoose.Schema(
   {
     username: {
       type: String,
@@ -28,7 +28,7 @@ const userShema = new Schema(
       required: true,
       unique: true,
     },
-    avtar: {
+    avatar: {
       type: String,
       required: true, // cloudinary URL
     },
@@ -118,4 +118,4 @@ userShema.method.generateRefreshToken = async function () {
     }
   );
 };
-export const UserModel = new Model("User", userShema);
+export const UserModel = mongoose.model("User", userShema);
